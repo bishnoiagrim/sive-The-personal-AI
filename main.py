@@ -1,4 +1,4 @@
-
+#Terminal : apt get install pip
 # ALL ADDITIONAL MODULES REQUIRED
 #pip install pyttsx3
 #pip install speechRecognition
