@@ -1,3 +1,16 @@
+#Terminal : apt get install pip
+# ALL ADDITIONAL MODULES REQUIRED
+#pip install pyttsx3
+#pip install speechRecognition
+#pip install wikipedia
+
+import pyttsx3
+import speech_recognition as sr
+import wikipedia
+import webbrowser
+import os
+import smtplib
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
