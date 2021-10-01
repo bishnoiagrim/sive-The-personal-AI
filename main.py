@@ -23,9 +23,9 @@ def speak(audio):
 def wishMe():
     hour = int(datetime.datetime.now().hour)
     if hour>=0 and hour<12:
-        speak("Good Morning Agrim")
+        speak("Good Morning ")
     elif hour>=12 and hour<18:
-        speak("Good Afternoon Agrim")
+        speak("Good Afternoon ")
     else:
         speak("Good Evening Agrim")
     speak("I am Dramiti. Sive Dramiti. How may I help you")
@@ -57,6 +57,24 @@ def sendMail(to, content):
     server.sendmail('email@gamil.com',to,content)
     server.stop
 
+    
+    
+    import smtplib, ssl
+
+    port = 465  # For SSL
+    smtp_server = "smtp.gmail.com"
+    sender_email = "my@gmail.com"  # Enter your address
+    receiver_email = "your@gmail.com"  # Enter receiver address
+    password = input("Type your password and press enter: ")
+    message = """Subject: Hi there, This message is sent from Python."""
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+    server.login(sender_email, password)
+    server.sendmail(sender_email, receiver_email, message)
+
+    
+    
+    
 
 if __name__ == "__main__":
     wishMe()
@@ -76,7 +94,7 @@ if __name__ == "__main__":
         elif 'open github' in query:
             webbrowser.open("github.com")
         elif 'open my github ' in query:
-            webbrowser.open("github.com/agrimbishnoi")
+            webbrowser.open("github.com/")
         elif 'open stack overflow' in query:
             webbrowser.open("stackoverflow.com")
         elif 'open geeks for geeks' in query:
@@ -101,12 +119,12 @@ if __name__ == "__main__":
         elif 'emain to papa' in query :
             try:
                 speak("What should I say? ")
-                content = takeCommand()
-                to = ""# email of reciever 
+                message = takeCommand()
+                sender_email = ""# email of reciever 
                 speak = f"Do you want to send mail saying {content} to {to} Say in yes or no."
                 permission = takeCommand()
                 if permission.lower() == 'yes':
-                    sendMail(to,content)
+                    server.sendmail(sender_email, receiver_email, message)
                     speak("Mail successfully sent")
                 elif permission == 'no' :
                     speak("Mail aborted")
